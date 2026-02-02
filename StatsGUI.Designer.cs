@@ -52,14 +52,14 @@ namespace Characterstatgui
             // nameTextBox
             // 
             nameTextBox.Font = new Font("Segoe UI", 9F);
-            nameTextBox.Location = new Point(224, 142);
+            nameTextBox.Location = new Point(243, 142);
             nameTextBox.Name = "nameTextBox";
             nameTextBox.Size = new Size(180, 23);
             nameTextBox.TabIndex = 0;
             // 
             // addStrButton
             // 
-            addStrButton.Location = new Point(308, 494);
+            addStrButton.Location = new Point(243, 211);
             addStrButton.Name = "addStrButton";
             addStrButton.Size = new Size(75, 23);
             addStrButton.TabIndex = 2;
@@ -69,7 +69,7 @@ namespace Characterstatgui
             // 
             // resetButton
             // 
-            resetButton.Location = new Point(203, 279);
+            resetButton.Location = new Point(469, 447);
             resetButton.Name = "resetButton";
             resetButton.Size = new Size(75, 23);
             resetButton.TabIndex = 3;
@@ -80,7 +80,7 @@ namespace Characterstatgui
             // pointsLabel
             // 
             pointsLabel.AutoSize = true;
-            pointsLabel.Location = new Point(203, 523);
+            pointsLabel.Location = new Point(469, 150);
             pointsLabel.Name = "pointsLabel";
             pointsLabel.Size = new Size(40, 15);
             pointsLabel.TabIndex = 4;
@@ -89,7 +89,7 @@ namespace Characterstatgui
             // strLabel
             // 
             strLabel.AutoSize = true;
-            strLabel.Location = new Point(401, 523);
+            strLabel.Location = new Point(324, 219);
             strLabel.Name = "strLabel";
             strLabel.Size = new Size(10, 15);
             strLabel.TabIndex = 5;
@@ -98,7 +98,7 @@ namespace Characterstatgui
             // nameLabel
             // 
             nameLabel.AutoSize = true;
-            nameLabel.Location = new Point(284, 115);
+            nameLabel.Location = new Point(257, 124);
             nameLabel.Name = "nameLabel";
             nameLabel.Size = new Size(39, 15);
             nameLabel.TabIndex = 7;
@@ -107,7 +107,7 @@ namespace Characterstatgui
             // classLabel
             // 
             classLabel.AutoSize = true;
-            classLabel.Location = new Point(273, 196);
+            classLabel.Location = new Point(606, 124);
             classLabel.Name = "classLabel";
             classLabel.Size = new Size(34, 15);
             classLabel.TabIndex = 8;
@@ -115,7 +115,7 @@ namespace Characterstatgui
             // 
             // addDexButton
             // 
-            addDexButton.Location = new Point(496, 494);
+            addDexButton.Location = new Point(243, 249);
             addDexButton.Name = "addDexButton";
             addDexButton.Size = new Size(75, 23);
             addDexButton.TabIndex = 9;
@@ -125,7 +125,7 @@ namespace Characterstatgui
             // 
             // addIntButton
             // 
-            addIntButton.Location = new Point(685, 494);
+            addIntButton.Location = new Point(243, 287);
             addIntButton.Name = "addIntButton";
             addIntButton.Size = new Size(75, 23);
             addIntButton.TabIndex = 10;
@@ -136,7 +136,7 @@ namespace Characterstatgui
             // dexLabel
             // 
             dexLabel.AutoSize = true;
-            dexLabel.Location = new Point(576, 523);
+            dexLabel.Location = new Point(324, 257);
             dexLabel.Name = "dexLabel";
             dexLabel.Size = new Size(10, 15);
             dexLabel.TabIndex = 11;
@@ -145,7 +145,7 @@ namespace Characterstatgui
             // intLabel
             // 
             intLabel.AutoSize = true;
-            intLabel.Location = new Point(784, 523);
+            intLabel.Location = new Point(324, 295);
             intLabel.Name = "intLabel";
             intLabel.Size = new Size(10, 15);
             intLabel.TabIndex = 12;
@@ -154,7 +154,7 @@ namespace Characterstatgui
             // infoLabel
             // 
             infoLabel.AutoSize = true;
-            infoLabel.Location = new Point(284, 279);
+            infoLabel.Location = new Point(496, 473);
             infoLabel.Name = "infoLabel";
             infoLabel.Size = new Size(12, 15);
             infoLabel.TabIndex = 13;
@@ -165,7 +165,7 @@ namespace Characterstatgui
             classComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             classComboBox.FormattingEnabled = true;
             classComboBox.Items.AddRange(new object[] { "barbarian", "sorceress" });
-            classComboBox.Location = new Point(243, 224);
+            classComboBox.Location = new Point(576, 142);
             classComboBox.Name = "classComboBox";
             classComboBox.Size = new Size(121, 23);
             classComboBox.TabIndex = 14;
