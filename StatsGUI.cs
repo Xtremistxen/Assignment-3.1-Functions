@@ -71,13 +71,13 @@ namespace Characterstatgui
         // Below are the custom function for parameters + non-void return types
 
         // Returns bool checks if inputs are filled in
-        private bool IsInputValid(string name, string cls)
+        private bool IsInputValid(string name, string cls) //  New function(1) Bool for name and class check
         {
             return name != "" && cls != "";
         }
 
         // Returns bool checks if points are available
-        private bool CanSpendPoint(int currentPoints)
+        private bool CanSpendPoint(int currentPoints) // New function(2) bool check if can spend skill points
         {
             return currentPoints > 0;
         }
@@ -91,7 +91,7 @@ namespace Characterstatgui
         }
 
         // Returns int starting points based on class text
-        private int GetStartingPoints(string cls)
+        private int GetStartingPoints(string cls) // New function(3) checks which class is chosen with additional points
         {
             string c = cls.ToLower();
 
@@ -101,7 +101,7 @@ namespace Characterstatgui
         }
 
         // Returns string builds label text nice and simple as it should be
-        private string MakeStatText(string statName, int value)
+        private string MakeStatText(string statName, int value) // New function(4) checks stat name and value being added to a stat
         {
             return statName + ": " + value;
         }
