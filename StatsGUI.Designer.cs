@@ -34,28 +34,20 @@ namespace Characterstatgui
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StatsGUI));
-            nameTextBox = new TextBox();
             addStrButton = new Button();
             resetButton = new Button();
             pointsLabel = new Label();
             strLabel = new Label();
-            nameLabel = new Label();
-            classLabel = new Label();
             addDexButton = new Button();
             addIntButton = new Button();
             dexLabel = new Label();
             intLabel = new Label();
             infoLabel = new Label();
-            classComboBox = new ComboBox();
+            addVitButton = new Button();
+            addEnergyButton = new Button();
+            vitLabel = new Label();
+            energyLabel = new Label();
             SuspendLayout();
-            // 
-            // nameTextBox
-            // 
-            nameTextBox.Font = new Font("Segoe UI", 9F);
-            nameTextBox.Location = new Point(243, 142);
-            nameTextBox.Name = "nameTextBox";
-            nameTextBox.Size = new Size(180, 23);
-            nameTextBox.TabIndex = 0;
             // 
             // addStrButton
             // 
@@ -89,29 +81,11 @@ namespace Characterstatgui
             // strLabel
             // 
             strLabel.AutoSize = true;
-            strLabel.Location = new Point(324, 219);
+            strLabel.Location = new Point(324, 215);
             strLabel.Name = "strLabel";
             strLabel.Size = new Size(10, 15);
             strLabel.TabIndex = 5;
             strLabel.Text = ":";
-            // 
-            // nameLabel
-            // 
-            nameLabel.AutoSize = true;
-            nameLabel.Location = new Point(257, 124);
-            nameLabel.Name = "nameLabel";
-            nameLabel.Size = new Size(39, 15);
-            nameLabel.TabIndex = 7;
-            nameLabel.Text = "Name";
-            // 
-            // classLabel
-            // 
-            classLabel.AutoSize = true;
-            classLabel.Location = new Point(606, 124);
-            classLabel.Name = "classLabel";
-            classLabel.Size = new Size(34, 15);
-            classLabel.TabIndex = 8;
-            classLabel.Text = "Class";
             // 
             // addDexButton
             // 
@@ -136,7 +110,7 @@ namespace Characterstatgui
             // dexLabel
             // 
             dexLabel.AutoSize = true;
-            dexLabel.Location = new Point(324, 257);
+            dexLabel.Location = new Point(324, 253);
             dexLabel.Name = "dexLabel";
             dexLabel.Size = new Size(10, 15);
             dexLabel.TabIndex = 11;
@@ -145,7 +119,7 @@ namespace Characterstatgui
             // intLabel
             // 
             intLabel.AutoSize = true;
-            intLabel.Location = new Point(324, 295);
+            intLabel.Location = new Point(324, 291);
             intLabel.Name = "intLabel";
             intLabel.Size = new Size(10, 15);
             intLabel.TabIndex = 12;
@@ -160,16 +134,43 @@ namespace Characterstatgui
             infoLabel.TabIndex = 13;
             infoLabel.Text = "\"";
             // 
-            // classComboBox
+            // addVitButton
             // 
-            classComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            classComboBox.FormattingEnabled = true;
-            classComboBox.Items.AddRange(new object[] { "barbarian", "sorceress" });
-            classComboBox.Location = new Point(576, 142);
-            classComboBox.Name = "classComboBox";
-            classComboBox.Size = new Size(121, 23);
-            classComboBox.TabIndex = 14;
-            classComboBox.SelectedIndexChanged += classComboBox_SelectedIndexChanged;
+            addVitButton.Location = new Point(243, 325);
+            addVitButton.Name = "addVitButton";
+            addVitButton.Size = new Size(75, 23);
+            addVitButton.TabIndex = 15;
+            addVitButton.Text = "add VIT";
+            addVitButton.UseVisualStyleBackColor = true;
+            addVitButton.Click += addVitButton_Click;
+            // 
+            // addEnergyButton
+            // 
+            addEnergyButton.Location = new Point(243, 364);
+            addEnergyButton.Name = "addEnergyButton";
+            addEnergyButton.Size = new Size(75, 23);
+            addEnergyButton.TabIndex = 16;
+            addEnergyButton.Text = "add ENE";
+            addEnergyButton.UseVisualStyleBackColor = true;
+            addEnergyButton.Click += addEnergyButton_Click;
+            // 
+            // vitLabel
+            // 
+            vitLabel.AutoSize = true;
+            vitLabel.Location = new Point(324, 329);
+            vitLabel.Name = "vitLabel";
+            vitLabel.Size = new Size(10, 15);
+            vitLabel.TabIndex = 17;
+            vitLabel.Text = ":";
+            // 
+            // energyLabel
+            // 
+            energyLabel.AutoSize = true;
+            energyLabel.Location = new Point(324, 368);
+            energyLabel.Name = "energyLabel";
+            energyLabel.Size = new Size(10, 15);
+            energyLabel.TabIndex = 18;
+            energyLabel.Text = ":";
             // 
             // StatsGUI
             // 
@@ -179,19 +180,19 @@ namespace Characterstatgui
             BackgroundImage = Properties.Resources.Backgroundstats;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(956, 563);
-            Controls.Add(classComboBox);
+            Controls.Add(energyLabel);
+            Controls.Add(vitLabel);
+            Controls.Add(addEnergyButton);
+            Controls.Add(addVitButton);
             Controls.Add(infoLabel);
             Controls.Add(intLabel);
             Controls.Add(dexLabel);
             Controls.Add(addIntButton);
             Controls.Add(addDexButton);
-            Controls.Add(classLabel);
-            Controls.Add(nameLabel);
             Controls.Add(strLabel);
             Controls.Add(pointsLabel);
             Controls.Add(resetButton);
             Controls.Add(addStrButton);
-            Controls.Add(nameTextBox);
             DoubleBuffered = true;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "StatsGUI";
@@ -201,19 +202,18 @@ namespace Characterstatgui
         }
 
         #endregion
-
-        private TextBox nameTextBox;
         private Button addStrButton;
         private Button resetButton;
         private Label pointsLabel;
         private Label strLabel;
-        private Label nameLabel;
-        private Label classLabel;
         private Button addDexButton;
         private Button addIntButton;
         private Label dexLabel;
         private Label intLabel;
         private Label infoLabel;
-        private ComboBox classComboBox;
+        private Button addVitButton;
+        private Button addEnergyButton;
+        private Label vitLabel;
+        private Label energyLabel;
     }
 }
