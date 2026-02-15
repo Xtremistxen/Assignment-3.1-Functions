@@ -11,6 +11,11 @@ namespace Characterstatgui
 
             startButton.Enabled = false;
             infoLabel.Text = "Enter a name and choose a class.";
+        
+            MusicManager.PlayMainTheme();   // Main music starts here
+
+            startButton.Enabled = false;
+            infoLabel.Text = "Enter a name and choose a class.";
         }
 
         // Runs when name or class changes

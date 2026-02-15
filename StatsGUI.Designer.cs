@@ -34,7 +34,6 @@ namespace Characterstatgui
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StatsGUI));
-            addStrButton = new Button();
             resetButton = new Button();
             pointsLabel = new Label();
             strLabel = new Label();
@@ -47,17 +46,9 @@ namespace Characterstatgui
             addEnergyButton = new Button();
             vitLabel = new Label();
             energyLabel = new Label();
+            openPuzzleButton = new Button();
+            addStrButton = new Button();
             SuspendLayout();
-            // 
-            // addStrButton
-            // 
-            addStrButton.Location = new Point(243, 211);
-            addStrButton.Name = "addStrButton";
-            addStrButton.Size = new Size(75, 23);
-            addStrButton.TabIndex = 2;
-            addStrButton.Text = "add STR";
-            addStrButton.UseVisualStyleBackColor = true;
-            addStrButton.Click += addStrButton_Click;
             // 
             // resetButton
             // 
@@ -72,7 +63,7 @@ namespace Characterstatgui
             // pointsLabel
             // 
             pointsLabel.AutoSize = true;
-            pointsLabel.Location = new Point(469, 150);
+            pointsLabel.Location = new Point(457, 110);
             pointsLabel.Name = "pointsLabel";
             pointsLabel.Size = new Size(40, 15);
             pointsLabel.TabIndex = 4;
@@ -81,7 +72,7 @@ namespace Characterstatgui
             // strLabel
             // 
             strLabel.AutoSize = true;
-            strLabel.Location = new Point(324, 215);
+            strLabel.Location = new Point(369, 204);
             strLabel.Name = "strLabel";
             strLabel.Size = new Size(10, 15);
             strLabel.TabIndex = 5;
@@ -89,28 +80,30 @@ namespace Characterstatgui
             // 
             // addDexButton
             // 
-            addDexButton.Location = new Point(243, 249);
+            addDexButton.BackColor = Color.Black;
+            addDexButton.Image = (Image)resources.GetObject("addDexButton.Image");
+            addDexButton.Location = new Point(243, 245);
             addDexButton.Name = "addDexButton";
-            addDexButton.Size = new Size(75, 23);
+            addDexButton.Size = new Size(120, 40);
             addDexButton.TabIndex = 9;
-            addDexButton.Text = "add DEX";
-            addDexButton.UseVisualStyleBackColor = true;
+            addDexButton.UseVisualStyleBackColor = false;
             addDexButton.Click += addDexButton_Click;
             // 
             // addIntButton
             // 
+            addIntButton.BackColor = Color.Black;
+            addIntButton.Image = (Image)resources.GetObject("addIntButton.Image");
             addIntButton.Location = new Point(243, 287);
             addIntButton.Name = "addIntButton";
-            addIntButton.Size = new Size(75, 23);
+            addIntButton.Size = new Size(120, 40);
             addIntButton.TabIndex = 10;
-            addIntButton.Text = "add INT";
-            addIntButton.UseVisualStyleBackColor = true;
+            addIntButton.UseVisualStyleBackColor = false;
             addIntButton.Click += addIntButton_Click;
             // 
             // dexLabel
             // 
             dexLabel.AutoSize = true;
-            dexLabel.Location = new Point(324, 253);
+            dexLabel.Location = new Point(369, 258);
             dexLabel.Name = "dexLabel";
             dexLabel.Size = new Size(10, 15);
             dexLabel.TabIndex = 11;
@@ -119,7 +112,7 @@ namespace Characterstatgui
             // intLabel
             // 
             intLabel.AutoSize = true;
-            intLabel.Location = new Point(324, 291);
+            intLabel.Location = new Point(369, 300);
             intLabel.Name = "intLabel";
             intLabel.Size = new Size(10, 15);
             intLabel.TabIndex = 12;
@@ -136,28 +129,31 @@ namespace Characterstatgui
             // 
             // addVitButton
             // 
-            addVitButton.Location = new Point(243, 325);
+            addVitButton.BackColor = Color.Black;
+            addVitButton.BackgroundImageLayout = ImageLayout.None;
+            addVitButton.Image = (Image)resources.GetObject("addVitButton.Image");
+            addVitButton.Location = new Point(243, 333);
             addVitButton.Name = "addVitButton";
-            addVitButton.Size = new Size(75, 23);
-            addVitButton.TabIndex = 15;
-            addVitButton.Text = "add VIT";
-            addVitButton.UseVisualStyleBackColor = true;
+            addVitButton.Size = new Size(120, 40);
+            addVitButton.TabIndex = 10;
+            addVitButton.UseVisualStyleBackColor = false;
             addVitButton.Click += addVitButton_Click;
             // 
             // addEnergyButton
             // 
-            addEnergyButton.Location = new Point(243, 364);
+            addEnergyButton.BackColor = Color.Black;
+            addEnergyButton.Image = (Image)resources.GetObject("addEnergyButton.Image");
+            addEnergyButton.Location = new Point(243, 379);
             addEnergyButton.Name = "addEnergyButton";
-            addEnergyButton.Size = new Size(75, 23);
+            addEnergyButton.Size = new Size(120, 40);
             addEnergyButton.TabIndex = 16;
-            addEnergyButton.Text = "add ENE";
-            addEnergyButton.UseVisualStyleBackColor = true;
+            addEnergyButton.UseVisualStyleBackColor = false;
             addEnergyButton.Click += addEnergyButton_Click;
             // 
             // vitLabel
             // 
             vitLabel.AutoSize = true;
-            vitLabel.Location = new Point(324, 329);
+            vitLabel.Location = new Point(369, 346);
             vitLabel.Name = "vitLabel";
             vitLabel.Size = new Size(10, 15);
             vitLabel.TabIndex = 17;
@@ -166,11 +162,32 @@ namespace Characterstatgui
             // energyLabel
             // 
             energyLabel.AutoSize = true;
-            energyLabel.Location = new Point(324, 368);
+            energyLabel.Location = new Point(369, 392);
             energyLabel.Name = "energyLabel";
             energyLabel.Size = new Size(10, 15);
             energyLabel.TabIndex = 18;
             energyLabel.Text = ":";
+            // 
+            // openPuzzleButton
+            // 
+            openPuzzleButton.Location = new Point(686, 447);
+            openPuzzleButton.Name = "openPuzzleButton";
+            openPuzzleButton.Size = new Size(87, 23);
+            openPuzzleButton.TabIndex = 19;
+            openPuzzleButton.Text = "Go to Puzzle";
+            openPuzzleButton.UseVisualStyleBackColor = true;
+            openPuzzleButton.Click += openPuzzleButton_Click;
+            // 
+            // addStrButton
+            // 
+            addStrButton.BackColor = Color.Black;
+            addStrButton.Image = (Image)resources.GetObject("addStrButton.Image");
+            addStrButton.Location = new Point(243, 197);
+            addStrButton.Name = "addStrButton";
+            addStrButton.Size = new Size(120, 40);
+            addStrButton.TabIndex = 20;
+            addStrButton.UseVisualStyleBackColor = false;
+            addStrButton.Click += addStrButton_Click;
             // 
             // StatsGUI
             // 
@@ -180,6 +197,8 @@ namespace Characterstatgui
             BackgroundImage = Properties.Resources.Backgroundstats;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(956, 563);
+            Controls.Add(addStrButton);
+            Controls.Add(openPuzzleButton);
             Controls.Add(energyLabel);
             Controls.Add(vitLabel);
             Controls.Add(addEnergyButton);
@@ -192,7 +211,6 @@ namespace Characterstatgui
             Controls.Add(strLabel);
             Controls.Add(pointsLabel);
             Controls.Add(resetButton);
-            Controls.Add(addStrButton);
             DoubleBuffered = true;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "StatsGUI";
@@ -202,7 +220,6 @@ namespace Characterstatgui
         }
 
         #endregion
-        private Button addStrButton;
         private Button resetButton;
         private Label pointsLabel;
         private Label strLabel;
@@ -215,5 +232,7 @@ namespace Characterstatgui
         private Button addEnergyButton;
         private Label vitLabel;
         private Label energyLabel;
+        private Button openPuzzleButton;
+        private Button addStrButton;
     }
 }

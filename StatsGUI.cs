@@ -24,8 +24,12 @@ namespace Characterstatgui
         public StatsGUI()
         {
             InitializeComponent(); // Loads a GUI from the designer
+
+            MusicManager.PlayMainTheme(); // Plays the same music from theme
+
             UpdateLabels(); // displays the starting value on the form
             infoLabel.Text = "Loaded stats screen.";
+
         }
 
         // Constructor used when SetupForm passes data into this form
@@ -151,6 +155,37 @@ namespace Characterstatgui
             vitLabel.Text = MakeStatText("Vitality", vitality);
             energyLabel.Text = MakeStatText("Energy", energy);
         }
+
+        // Turns stat buttons on/off depending on remaining points if 0
+        private void UpdateStatButtons()
+        {
+            bool canSpend = points > 0;
+
+            addStrButton.Enabled = canSpend;
+            addDexButton.Enabled = canSpend;
+            addIntButton.Enabled = canSpend;
+            addVitButton.Enabled = canSpend;
+            addEnergyButton.Enabled = canSpend;
+        }
+
+
+        private void openPuzzleButton_Click(object sender, EventArgs e)
+        {
+            // Open puzzle form
+            using (BrazierPuzzleForm puzzle = new BrazierPuzzleForm())
+            {
+                puzzle.ShowDialog();   // Pauses StatsGUI until puzzle closes
+               
+
+                // After puzzle closes, get earned stat points
+                points += puzzle.EarnedStatPoints;
+
+                UpdateLabels();        // Refresh stat display
+                UpdateStatButtons(); // Disables stat buttons
+            }
+        }
+
+
     }
 }
 

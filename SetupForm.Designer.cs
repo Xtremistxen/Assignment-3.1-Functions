@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SetupForm));
             nameTextBox = new TextBox();
             classComboBox = new ComboBox();
             infoLabel = new Label();
@@ -84,22 +85,24 @@
             // 
             // startButton
             // 
-            startButton.Location = new Point(249, 305);
+            startButton.BackColor = Color.Black;
+            startButton.Image = (Image)resources.GetObject("startButton.Image");
+            startButton.Location = new Point(193, 291);
             startButton.Name = "startButton";
-            startButton.Size = new Size(75, 23);
+            startButton.Size = new Size(180, 50);
             startButton.TabIndex = 5;
-            startButton.Text = "Start";
-            startButton.UseVisualStyleBackColor = true;
+            startButton.UseVisualStyleBackColor = false;
             startButton.Click += startButton_Click;
             // 
             // clearButton
             // 
-            clearButton.Location = new Point(481, 305);
+            clearButton.BackColor = Color.Black;
+            clearButton.Image = (Image)resources.GetObject("clearButton.Image");
+            clearButton.Location = new Point(424, 291);
             clearButton.Name = "clearButton";
-            clearButton.Size = new Size(75, 23);
+            clearButton.Size = new Size(180, 50);
             clearButton.TabIndex = 6;
-            clearButton.Text = "Clear";
-            clearButton.UseVisualStyleBackColor = true;
+            clearButton.UseVisualStyleBackColor = false;
             clearButton.Click += clearButton_Click;
             // 
             // SetupForm
