@@ -48,11 +48,14 @@ namespace Characterstatgui
             energyLabel = new Label();
             openPuzzleButton = new Button();
             addStrButton = new Button();
+            saveButton = new Button();
+            loadButton = new Button();
+            logListBox = new ListBox();
             SuspendLayout();
             // 
             // resetButton
             // 
-            resetButton.Location = new Point(469, 447);
+            resetButton.Location = new Point(457, 447);
             resetButton.Name = "resetButton";
             resetButton.Size = new Size(75, 23);
             resetButton.TabIndex = 3;
@@ -121,7 +124,7 @@ namespace Characterstatgui
             // infoLabel
             // 
             infoLabel.AutoSize = true;
-            infoLabel.Location = new Point(496, 473);
+            infoLabel.Location = new Point(457, 473);
             infoLabel.Name = "infoLabel";
             infoLabel.Size = new Size(12, 15);
             infoLabel.TabIndex = 13;
@@ -189,6 +192,36 @@ namespace Characterstatgui
             addStrButton.UseVisualStyleBackColor = false;
             addStrButton.Click += addStrButton_Click;
             // 
+            // saveButton
+            // 
+            saveButton.Location = new Point(223, 447);
+            saveButton.Name = "saveButton";
+            saveButton.Size = new Size(75, 23);
+            saveButton.TabIndex = 21;
+            saveButton.Text = "Save";
+            saveButton.UseVisualStyleBackColor = true;
+            saveButton.Click += saveButton_Click;
+            // 
+            // loadButton
+            // 
+            loadButton.Location = new Point(304, 447);
+            loadButton.Name = "loadButton";
+            loadButton.Size = new Size(75, 23);
+            loadButton.TabIndex = 22;
+            loadButton.Text = "Load";
+            loadButton.UseVisualStyleBackColor = true;
+            loadButton.Click += loadButton_Click;
+            // 
+            // logListBox
+            // 
+            logListBox.BackColor = Color.Black;
+            logListBox.FormattingEnabled = true;
+            logListBox.ItemHeight = 15;
+            logListBox.Location = new Point(824, 457);
+            logListBox.Name = "logListBox";
+            logListBox.Size = new Size(120, 94);
+            logListBox.TabIndex = 23;
+            // 
             // StatsGUI
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -197,6 +230,9 @@ namespace Characterstatgui
             BackgroundImage = Properties.Resources.Backgroundstats;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(956, 563);
+            Controls.Add(logListBox);
+            Controls.Add(loadButton);
+            Controls.Add(saveButton);
             Controls.Add(addStrButton);
             Controls.Add(openPuzzleButton);
             Controls.Add(energyLabel);
@@ -234,5 +270,8 @@ namespace Characterstatgui
         private Label energyLabel;
         private Button openPuzzleButton;
         private Button addStrButton;
+        private Button saveButton;
+        private Button loadButton;
+        private ListBox logListBox;
     }
 }

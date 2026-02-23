@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Characterstatgui
@@ -6,6 +7,7 @@ namespace Characterstatgui
     // Change a lot in my statsgui
     public partial class StatsGUI : Form
     {
+        // Below will the be example data for the save/load 
         // Stores how many points a player can spend
         int points = 5;
         int strength = 0;
@@ -20,7 +22,12 @@ namespace Characterstatgui
         bool characterCreated = false;
         string characterName = "";
 
-        // Default constructor (optional)
+        // This will save our Save/Load data will save.
+        private string saveFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "savegame.txt");
+        private string logFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "puzzlelog.txt");
+
+
+        // Default constructor 
         public StatsGUI()
         {
             InitializeComponent(); // Loads a GUI from the designer
@@ -166,16 +173,33 @@ namespace Characterstatgui
             addIntButton.Enabled = canSpend;
             addVitButton.Enabled = canSpend;
             addEnergyButton.Enabled = canSpend;
+
+            MessageBox.Show("Loaded character from savegame.txt!", "Load Complete");
+
+            // Also load and show the log file (FILE #2)
+            if (File.Exists(logFilePath))
+            {
+                string[] logLines = File.ReadAllLines(logFilePath);
+
+                // OPTIONAL: show log in a ListBox if you added one
+                if (logListBox != null)
+                {
+                    logListBox.Items.Clear();
+                    foreach (string log in logLines)
+                        logListBox.Items.Add(log);
+                }
+            }
         }
 
 
-        private void openPuzzleButton_Click(object sender, EventArgs e)
+
+          private void openPuzzleButton_Click(object sender, EventArgs e)
         {
             // Open puzzle form
             using (BrazierPuzzleForm puzzle = new BrazierPuzzleForm())
             {
                 puzzle.ShowDialog();   // Pauses StatsGUI until puzzle closes
-               
+
 
                 // After puzzle closes, get earned stat points
                 points += puzzle.EarnedStatPoints;
@@ -185,7 +209,111 @@ namespace Characterstatgui
             }
         }
 
+        // saveButton_Cick "SAVE" will write to 2 files when saving
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // FILE #1: this will save character/stats as simple lines of text
+                
+                string saveText =
+                    characterName + "\n" +
+                    characterClass + "\n" +
+                    points + "\n" +
+                    strength + "\n" +
+                    dexterity + "\n" +
+                    intelligence + "\n" +
+                    vitality + "\n" +
+                    energy;
 
+                File.WriteAllText(saveFilePath, saveText);
+
+                // FILE #2: Append a log entry it will keep adding lines over times!
+                string logLine = DateTime.Now.ToString() + " - Saved character.\n";
+                File.AppendAllText(logFilePath, logLine);
+
+                MessageBox.Show("Saved!\n\n" +
+                                "savegame.txt + puzzlelog.txt were written.",
+                                "Save Complete");
+            }
+            catch (UnauthorizedAccessException)
+            {
+                MessageBox.Show("Save failed: No permission to write files here.", "Error");
+            }
+            catch (IOException)
+            {
+                MessageBox.Show("Save failed: File is in use or path is invalid.", "Error");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Save failed: " + ex.Message, "Error");
+            }
+
+        }
+        // loadButton_Click will load from the read file from save and reads the file log
+        private void loadButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Make sure save file exists before reading
+                if (!File.Exists(saveFilePath))
+                {
+                    MessageBox.Show("No savegame.txt found yet. Click Save first.", "Load");
+                    return;
+                }
+
+                // Read all lines from savegame.txt
+                string[] lines = File.ReadAllLines(saveFilePath);
+
+                // Expected format = 8 lines
+                // (we validate so we don't crash if file is edited or corrupted)
+                if (lines.Length < 8)
+                {
+                    MessageBox.Show("Save file is missing data (corrupted or edited).", "Load Error");
+                    return;
+                }
+
+                // Load data back into variables
+                characterName = lines[0];
+                characterClass = lines[1];
+
+                points = int.Parse(lines[2]);
+                strength = int.Parse(lines[3]);
+                dexterity = int.Parse(lines[4]);
+                intelligence = int.Parse(lines[5]);
+                vitality = int.Parse(lines[6]);
+                energy = int.Parse(lines[7]);
+
+                // Update UI labels after loading
+                UpdateLabels();
+                UpdateStatButtons();
+
+                MessageBox.Show("Loaded character from savegame.txt!", "Load Complete");
+
+                // FILE #2: read log and show it
+                if (File.Exists(logFilePath))
+                {
+                    string logText = File.ReadAllText(logFilePath);
+
+                    if (string.IsNullOrWhiteSpace(logText))
+                        logText = "(Log is empty.)";
+
+                    MessageBox.Show(logText, "Puzzle Log");
+                }
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Load failed: Save file contains invalid numbers.", "Error");
+            }
+            catch (IOException)
+            {
+                MessageBox.Show("Load failed: File is in use or unreadable.", "Error");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Load failed: " + ex.Message, "Error");
+            }
+        }
     }
 }
 
